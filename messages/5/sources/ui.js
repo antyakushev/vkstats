@@ -289,6 +289,7 @@ var ui = {
 		html += '<div style="width: 300px; height: 30px;"><input type="hidden" id="param_kbytes" /></div>';
 		html += '<div style="width: 300px; height: 30px;"><input type="hidden" id="param_sort_kbytes" /></div>';
 		html += '<div style="width: 300px; height: 30px;"><input type="hidden" id="param_friends_only" /></div>';
+		html += '<div style="width: 300px; height: 30px;"><input type="hidden" id="param_not_from_chat" /></div>';
 		html += '<div style="width: 300px; height: 30px;"><input type="hidden" id="param_fancy_graphs" /></div>';
 		html += '<div style="width: 300px; height: 30px;"><input type="hidden" id="param_hide_avatars" /></div>';
 		mbox.content(html).show();
@@ -322,7 +323,7 @@ var ui = {
 
 		new Checkbox(ge('param_not_from_chat'), {
 			label: user.lang.notFromChat,
-			checked: 0,
+			checked: 1,
 			onChange: function() {
 				user.notFromChat = !user.notFromChat; 
 				//user.friendsOnly = !user.notFromChat;
