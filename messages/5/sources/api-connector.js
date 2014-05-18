@@ -198,7 +198,7 @@ apiConnector = {
 			SYS.log('getMessages invoked: out=' + out + "; offset=" + offset);
 		}
 		var previewLength = user.kbytes ? 0 : 1;
-		vk_api.call('messages.get',{filters:filter(),offset:offset,out:out,preview_length:previewLength,count:count},onDone);
+		vk_api.call('messages.get',{filters:this.filter(),offset:offset,out:out,preview_length:previewLength,count:count},onDone);
 	},	
 	getMessages: function(out, offset, count, onDone) {
 		if(user.verbose) {
@@ -206,7 +206,7 @@ apiConnector = {
 		}
 		var _count=count;
 		var previewLength = user.kbytes ? 0 : 1;
-		var filters = filter();
+		var filters = this.filter();
 		code_body='';
 		code_r=[];
 		steps=Math.ceil(count/100);
