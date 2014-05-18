@@ -314,7 +314,19 @@ var ui = {
 		new Checkbox(ge('param_friends_only'), {
 			label: user.lang.friendsOnly,
 			checked: 0,
-			onChange: function() {user.friendsOnly = !user.friendsOnly;}
+			onChange: function() {
+				user.friendsOnly = !user.friendsOnly; 
+				//user.notFromChat = !user.friendsOnly;
+			}
+		});
+
+		new Checkbox(ge('param_not_from_chat'), {
+			label: user.lang.notFromChat,
+			checked: 0,
+			onChange: function() {
+				user.notFromChat = !user.notFromChat; 
+				//user.friendsOnly = !user.notFromChat;
+			}
 		});
 		
 		new Checkbox(ge('param_fancy_graphs'), {

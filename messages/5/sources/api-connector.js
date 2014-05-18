@@ -198,7 +198,7 @@ apiConnector = {
 			SYS.log('getMessages invoked: out=' + out + "; offset=" + offset);
 		}
 		var previewLength = user.kbytes ? 0 : 1;
-		vk_api.call('messages.get',{filters:user.friendsOnly?4:0,offset:offset,out:out,preview_length:previewLength,count:count},onDone);
+		vk_api.call('messages.get',{filters:filter(),offset:offset,out:out,preview_length:previewLength,count:count},onDone);
 	},	
 	getMessages: function(out, offset, count, onDone) {
 		if(user.verbose) {
@@ -206,7 +206,7 @@ apiConnector = {
 		}
 		var _count=count;
 		var previewLength = user.kbytes ? 0 : 1;
-		var filters = user.friendsOnly ? 4 : 0;
+		var filters = filter();
 		code_body='';
 		code_r=[];
 		steps=Math.ceil(count/100);
@@ -275,6 +275,18 @@ apiConnector = {
 			SYS.log('createNote:  title=' +title + "; text=" + text);
 		}
 		vk_api.call('notes.add',{text:text,title:title},onDone);
+	},
+
+	filter: function() {
+		var filter = 0;
+		if (user.notFromChat || user.friendsOnly) {
+			if (user.notFromChat) {
+				filter = 2;
+			} else {
+				filter = 4;
+			}
+		}
+		return filter;
 	}
 };
 
